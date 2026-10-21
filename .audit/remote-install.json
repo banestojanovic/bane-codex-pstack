@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "verifiedAt": "2026-10-21T06:16:48.498887+00:00",
+  "source": "banestojanovic/bane-codex-pstack",
+  "sourceCommit": "38c03c14913b7e0db78e636aaf674f6878998708",
+  "pluginId": "pstack@bane-codex-pstack",
+  "version": "0.15.29-codex.1",
+  "nativeSkills": 59,
+  "parseErrors": [],
+  "commands": [
+    "codex plugin marketplace add banestojanovic/bane-codex-pstack --json",
+    "codex plugin add pstack@bane-codex-pstack --json"
+  ],
+  "isolated": true
+}

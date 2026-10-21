@@ -16,7 +16,7 @@ The source baseline is Cursor pstack 0.15.29 at commit `190d28736eff128ec94f502a
 | Transcript discovery stays scoped | Fixtures verify exact workspace metadata matching and no message bodies in output. |
 | Worktree audit remains conservative | Real Git worktree fixture with spaces, clean state, and staged work. |
 | Session hook emits correct opt-in JSON | Fixture runs for missing, off, and on states. |
-| Native marketplace installation succeeds | Real Codex marketplace/add calls under a temporary `CODEX_HOME`. |
+| Native marketplace installation succeeds | Real Codex marketplace/add calls under a temporary `CODEX_HOME`, including the published GitHub repository. [Remote install receipt](../.audit/remote-install.json). |
 | Native skill parser discovers the plugin | Real Codex app-server `skills/list` reports all 59 qualified skills without package errors. No model request is made. |
 | Upstream watcher, store, and plan checks pass | 68 Bun tests and strict TypeScript check. Forge responses are faked in upstream unit tests. |
 | Representative instruction behavior | Native agents exercised help, bro, unsupported bot behavior, and a simple how workflow. See the [behavioral probe record](../.audit/behavioral-probes.md). |
