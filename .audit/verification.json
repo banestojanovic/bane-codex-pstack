@@ -1,0 +1,72 @@
+{
+  "status": "PASS",
+  "finishedAt": "2026-10-21T06:13:50.431362+00:00",
+  "includeInstall": true,
+  "results": [
+    {
+      "startedAt": "2026-10-21T06:13:43.939625+00:00",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "tools/build.py",
+        "--check"
+      ],
+      "cwd": ".",
+      "exitCode": 0
+    },
+    {
+      "startedAt": "2026-10-21T06:13:44.067666+00:00",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "cwd": ".",
+      "exitCode": 0
+    },
+    {
+      "startedAt": "2026-10-21T06:13:45.763461+00:00",
+      "command": [
+        "bun",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "cwd": "plugins/pstack/skills/poteto-mode/scripts",
+      "exitCode": 0
+    },
+    {
+      "startedAt": "2026-10-21T06:13:45.841825+00:00",
+      "command": [
+        "bun",
+        "test",
+        "orch",
+        "watch-pr",
+        "check-plan.test.ts"
+      ],
+      "cwd": "plugins/pstack/skills/poteto-mode/scripts",
+      "exitCode": 0
+    },
+    {
+      "startedAt": "2026-10-21T06:13:49.518735+00:00",
+      "command": [
+        "bun",
+        "run",
+        "typecheck"
+      ],
+      "cwd": "plugins/pstack/skills/poteto-mode/scripts",
+      "exitCode": 0
+    },
+    {
+      "startedAt": "2026-10-21T06:13:50.029772+00:00",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "tools/smoke_install.py"
+      ],
+      "cwd": ".",
+      "exitCode": 0
+    }
+  ]
+}

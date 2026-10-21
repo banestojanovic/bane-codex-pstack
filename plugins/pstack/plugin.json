@@ -1,0 +1,37 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "pstack",
+  "version": "0.15.29-codex.1",
+  "description": "Lauren Tan's pstack workflows adapted for native Codex skills and subagents.",
+  "author": {
+    "name": "Bane Stojanovic (Codex port); Lauren Tan (upstream)"
+  },
+  "homepage": "https://github.com/banestojanovic/bane-codex-pstack",
+  "repository": "https://github.com/banestojanovic/bane-codex-pstack",
+  "license": "MIT",
+  "extensions": {
+    "com.openai": {
+      "skills": "./skills/",
+      "hooks": "./hooks/hooks.json",
+      "onboardingSkill": "./skills/setup-pstack/SKILL.md",
+      "interface": {
+        "displayName": "pstack for Codex",
+        "shortDescription": "Rigorous workflows with native Codex delegation",
+        "developerName": "Bane Stojanovic",
+        "category": "Developer Tools",
+        "capabilities": [
+          "Read",
+          "Write",
+          "Interactive"
+        ],
+        "websiteURL": "https://github.com/banestojanovic/bane-codex-pstack",
+        "logo": "./assets/logo.png",
+        "composerIcon": "./assets/logo.png",
+        "defaultPrompt": [
+          "Use $pstack:poteto-mode for this task.",
+          "Run $pstack:setup-pstack."
+        ]
+      }
+    }
+  }
+}

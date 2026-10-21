@@ -1,0 +1,11 @@
+# Codex port architecture
+
+The domain is a pinned source snapshot plus an explicit runtime adapter. `upstream.lock.json` records the upstream commit, file hashes, skill names, playbooks, and dependency hashes. The installed package carries `provenance.json`, which records whether each source file is unchanged, wrapped, overlaid, or omitted.
+
+The generator copies source resources, preserves executable bits, and adds an adapter link before each skill's workflow. It removes Cursor-only entrypoint metadata and supplies Codex manifests. Setup and help have native instructions. The executable worktree audit has a conservative Codex overlay because prose mapping cannot alter a running shell script. Apart from setup and help overlays, workflow steps remain source-identical. Skill entry headers and frontmatter are adapted, with explicit-only invocation policies emitted as native metadata. The installed README is also a Codex overlay.
+
+We considered rewriting all Cursor words and paths. That would make each skill look native but would hide semantic changes across hundreds of lines and make upstream updates harder to review. The adapter design follows upstream's own Claude Code harness architecture and keeps the adaptation count explicit. It relies on the model reading the entrypoint adapter, so behavioral probes remain necessary in addition to source parity tests.
+
+The setup tool parses TOML before mutation, computes proposed content, validates that the parsed TOML differs only by enabling features.multi_agent, then writes changed files through atomic replacement with backups. It preserves unrelated configuration and global instructions. Atomic replacement is per file, not a transaction across the three files; an OS failure may require rerunning setup or restoring a backup. It rejects unsupported TOML structures rather than rewriting arbitrary syntax.
+
+The plugin contains no MCP server, authentication service, model proxy, detached agent launcher, or Cursor service implementation. Native Codex tools perform delegation. Local helper CLIs retain upstream's GitHub and orchestration logic. The host owns model availability, sandbox permissions, hook trust, UI drivers, and scheduling capability.
