@@ -11,6 +11,8 @@ codex plugin add pstack@bane-codex-pstack
 
 Start a new chat. Choose `setup-pstack` in `/skills` or invoke `$pstack:setup-pstack`. Setup detects models, asks for a budget and role choices, then writes a model sheet and managed instructions under `$CODEX_HOME`, defaulting to `~/.codex`. Existing unrelated configuration and instructions are preserved. Start a new chat after setup.
 
+If setup cannot use a native question tool in this session, it asks one question with a typed-answer example. It never treats printed bullets as selectable controls. For Codex CLI builds that list `default_mode_request_user_input` in `codex features list`, `codex --enable default_mode_request_user_input` opts into experimental Default-mode questions for that launch. The plugin does not enable the experimental flag automatically.
+
 ## Start work
 
 ```text

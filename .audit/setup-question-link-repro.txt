@@ -1,0 +1,33 @@
+test_all_source_commands_and_playbooks_survive (test_package.PackageTests.test_all_source_commands_and_playbooks_survive) ... ok
+test_explicit_only_skills_preserve_native_invocation_policy (test_package.PackageTests.test_explicit_only_skills_preserve_native_invocation_policy) ... ok
+test_generated_tree_matches_locked_source_and_modes (test_package.PackageTests.test_generated_tree_matches_locked_source_and_modes) ... ok
+test_generator_detects_content_missing_extra_and_executable_drift (test_package.PackageTests.test_generator_detects_content_missing_extra_and_executable_drift) ... Generated files differ. Run python3 tools/build.py
+skills/bro/SKILL.md
+Generated files differ. Run python3 tools/build.py
+skills/bro/SKILL.md
+Generated files differ. Run python3 tools/build.py
+extra.txt
+Generated files differ. Run python3 tools/build.py
+skills/poteto-mode/scripts/worktree-audit.sh
+ok
+test_hook_is_opt_in_and_reports_correct_protocol (test_package.PackageTests.test_hook_is_opt_in_and_reports_correct_protocol) ... ok
+test_manifests_resolve_and_both_formats_agree (test_package.PackageTests.test_manifests_resolve_and_both_formats_agree) ... ok
+test_packaged_markdown_links_resolve (test_package.PackageTests.test_packaged_markdown_links_resolve) ... FAIL
+test_provenance_accounts_for_every_source_and_dependency (test_package.PackageTests.test_provenance_accounts_for_every_source_and_dependency) ... ok
+test_transcripts_scope_by_metadata_never_message_text (test_package.PackageTests.test_transcripts_scope_by_metadata_never_message_text) ... ok
+test_worktree_audit_preserves_spaces_and_never_assumes_safe (test_package.PackageTests.test_worktree_audit_preserves_spaces_and_never_assumes_safe) ... ok
+
+======================================================================
+FAIL: test_packaged_markdown_links_resolve (test_package.PackageTests.test_packaged_markdown_links_resolve)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/banes/Code/scripts/bane/bane-codex-pstack/tests/test_package.py", line 96, in test_packaged_markdown_links_resolve
+    self.assertTrue((path.parent / unquote(target)).exists(), f'{path}: {href}')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : /Users/banes/Code/scripts/bane/bane-codex-pstack/plugins/pstack/skills/poteto-mode/scripts/node_modules/commander/Readme.md: ./Readme_zh-CN.md
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.710s
+
+FAILED (failures=1)
+OK: 56 upstream skills, 23 playbooks, 3 dependency skills; 242 packaged files

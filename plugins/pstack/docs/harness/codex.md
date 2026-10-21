@@ -22,10 +22,18 @@ Before dispatching any subagent, read `${CODEX_HOME:-~/.codex}/pstack-models.md`
 | `run_in_background: true` | Native spawn is asynchronous. Omit the field. |
 | `resume` | Fresh agent with consolidated brief and previous result by default. Reuse only for costly live state as upstream specifies and only through a native follow-up tool. |
 | `file_attachments` | Include absolute file pointers in the brief. |
-| `AskQuestion`, `AskUserQuestion` | Use the host's question tool if offered, otherwise ask in ordinary text. Do not wait for a preference that experiments can settle. |
+| `AskQuestion`, `AskUserQuestion` | Follow the question transport rules below. Do not wait for a preference that experiments can settle. |
 | Todolist, todo list | Native plan tool when available, otherwise `.audit/<task>.todo.md`. Preserve skipped steps with their reasons. |
 | `Read`, `Grep`, `Glob`, `Bash` | The host's file and shell tools, `rg` for search. |
 | Built-in PR tool | A connected forge tool if available, otherwise the resolved `gh` or `origin` CLI. Attach created PRs with the Codex app artifact tool if provided. |
+
+### Question transport
+
+Use `request_user_input_async` first when the host exposes it and permits its use in the current mode. Otherwise use `request_user_input` only when exposed and permitted in the current mode. Read the actual tool schema and obey its question and option limits. Do not invent a schema or call an inaccessible tool. Ask one decision at a time. For an asynchronous question, yield and use the host's documented answer or wait mechanism to receive the actual answer before continuing dependent work. An unanswered question or a preselected default does not express the user's choice. While a required preference is pending, continue only independent preparation. Do not apply setup or claim it is complete.
+
+When neither tool is usable, start with "Interactive choices are unavailable in this session; please type your answer." Then ask one concise question in ordinary text and give a natural-language answer example such as "Use session effort." Wait for the answer. A Markdown list is not an interactive menu. Never tell the user to select options above when no actual question widget was created.
+
+Do not switch to Plan mode automatically or claim a prompt can enable question popups. For a CLI user who wants interactive questions in Default mode, inspect `codex features list` if available. Only if that CLI lists `default_mode_request_user_input`, explain the optional launch command `codex --enable default_mode_request_user_input` and that the feature is experimental. Do not enable it by default or change user configuration for this purpose. Tool availability and current mode still determine whether it can be used.
 
 Writing workers each own a worktree or output directory. `spawn_agent` may require `fork_turns: "none"` when selecting a model. In that case provide a self-contained brief, constraints, base revision, file pointers, and absolute poteto-mode path. Pass the role's model explicitly. Collect every child completion before claiming the parent phase complete.
 

@@ -16,7 +16,7 @@
   },
   "README.md": {
     "upstream": "b928886260bd551b0c8f3e58617a5dc3ad8dfc1293d096b1ef81b84007532486",
-    "generated": "b6c23a7421b2288267fc12ba687efa9b24a510f10e544c0122f1071271b3741b",
+    "generated": "47e648cdebbc04f3e57bb0b388fcdcb3eb3cdc6aea397d412c2a818311049fd9",
     "status": "Codex overlay"
   },
   "agents/comment-sicko.md": {
@@ -186,7 +186,7 @@
   },
   "plugin.json": {
     "upstream": "8a5811042556a0a981e9fdd08a2c726be76458833d64b484acaa611291308c2a",
-    "generated": "156a48af095cc4f1507a698f101e6dbfff182137e480556d1b04a4891b7a9835",
+    "generated": "46b7185f9f943312d0c895cf469f44e8372108e99b0d9098c6adf8a813663058",
     "status": "Codex overlay"
   },
   "skills/architect/SKILL.md": {
@@ -736,7 +736,7 @@
   },
   "skills/setup-pstack/SKILL.md": {
     "upstream": "b45512f6ca5e96e81681984683b7472bfe892581da3a89a73cca4159438f29ed",
-    "generated": "b48c378980105c683b69becd34adb5839d499c6ab31aa4f254a0a86d126e52f6",
+    "generated": "663f765c0f30bd7e136cf7ba364a83d947648f7ffa2be62ec61ff6a39275c99d",
     "status": "Codex overlay"
   },
   "skills/sharpen/SKILL.md": {

@@ -1,0 +1,12 @@
+{
+  "instructions": "Read the generated setup skill and its adapter. For each case, return the next setup action and, for a question, the proposed tool payload or user-facing text. These are simulated host capabilities for an instruction-following evaluation. Do not call user-input tools or write configuration during the evaluation.",
+  "cases": [
+    {"id": "async_default", "mode": "Default", "tools": {"request_user_input_async": {"usable": true, "fields": {"questions": [{"title": "string", "options": "array of strings, no maximum"}]}}}, "context": "Models and saved state have been read. Budget has not been chosen. Current budget is session."},
+    {"id": "sync_three_options", "mode": "Plan", "tools": {"request_user_input": {"usable": true, "maxQuestions": 3, "maxOptions": 3, "questionFields": ["header", "id", "question", "options"], "optionFields": ["label", "description"]}}, "context": "Models and saved state have been read. Budget has not been chosen. Current budget is session."},
+    {"id": "plan_only_in_default", "mode": "Default", "tools": {"request_user_input": {"usable": false, "restriction": "Plan mode only"}}, "context": "The user wants to choose a budget. No CLI feature listing has been run."},
+    {"id": "no_question_tools", "mode": "Default", "tools": {}, "context": "Models and saved state have been read. Budget is unknown. No CLI feature listing has been run."},
+    {"id": "async_pending", "mode": "Default", "tools": {"request_user_input_async": {"usable": true}}, "context": "A budget widget was posted. Session is preselected but no response has arrived. The config dry run would preserve existing settings. The project has no real-app or formal verification skill."},
+    {"id": "higher_budget_followup", "mode": "Plan", "tools": {"request_user_input": {"usable": true, "maxQuestions": 3, "maxOptions": 3, "questionFields": ["header", "id", "question", "options"], "optionFields": ["label", "description"]}}, "context": "The user selected fixed budget, then higher budget. The exact high budget is not yet chosen."},
+    {"id": "supplied_preferences", "mode": "Default", "tools": {"request_user_input_async": {"usable": true}}, "context": "The user explicitly said medium budget, keep the shown role table, keep the existing hook on, and skip both verification skill offers. All chosen models are available. No preferences are missing."}
+  ]
+}

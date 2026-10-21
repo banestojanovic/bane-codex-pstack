@@ -1,0 +1,88 @@
+{
+  "source_notes": {
+    "models_sheet": "Missing at /Users/banes/.codex/pstack-models.md, so no saved model sheet was available to read.",
+    "eval_file": "/Users/banes/Code/scripts/bane/bane-codex-pstack/tests/evals/setup-questions.json",
+    "constraints": "No question tool was called; no external service or configuration was touched."
+  },
+  "cases": [
+    {
+      "id": "async_default",
+      "next_action": "Ask one asynchronous question with all five budgets in the same widget.",
+      "question_payload": {
+        "questions": [
+          {
+            "title": "Which reasoning budget should pstack use by default? The current setting is session.",
+            "options": ["Session effort (no override)", "Small (medium reasoning)", "Medium (high reasoning)", "Large (xhigh reasoning)", "Unlimited (max reasoning)"]
+          }
+        ]
+      },
+      "setup_writes_allowed": false,
+      "unclear_instructions": null
+    },
+    {
+      "id": "sync_three_options",
+      "next_action": "Ask the first sequential question. If fixed is selected, ask a second question with small, medium, and higher; if higher is selected, ask a third question with large and unlimited. Stop as soon as the budget is known.",
+      "question_payload": {
+        "questions": [
+          {
+            "header": "Budget",
+            "id": "session_or_fixed",
+            "question": "Should pstack use the session's reasoning effort, or a fixed default budget?",
+            "options": [
+              {"label": "Session effort", "description": "Use the session's reasoning effort with no override."},
+              {"label": "Fixed budget", "description": "Choose a persistent reasoning budget."}
+            ]
+          }
+        ]
+      },
+      "setup_writes_allowed": false,
+      "unclear_instructions": null
+    },
+    {
+      "id": "plan_only_in_default",
+      "next_action": "Since the only question tool is unavailable in Default mode and the optional CLI feature listing has not been run, ask one concise question in ordinary text and wait. Do not switch modes or claim a popup will appear.",
+      "user_facing_text": "Which reasoning budget should pstack use? You can answer, for example, ‘Use session effort.’",
+      "setup_writes_allowed": false,
+      "unclear_instructions": null
+    },
+    {
+      "id": "no_question_tools",
+      "next_action": "Ask one concise question in ordinary text and wait for the answer.",
+      "user_facing_text": "Which reasoning budget should pstack use? You can answer, for example, ‘Use session effort.’",
+      "setup_writes_allowed": false,
+      "unclear_instructions": null
+    },
+    {
+      "id": "async_pending",
+      "next_action": "Wait for the actual answer to the posted budget widget. Do not treat the preselected session value as a choice or apply the dry run. Setup must remain unapplied while the preference is pending. The verification-skill offers occur only after model setup is written, so do not offer them yet.",
+      "setup_writes_allowed": false,
+      "unclear_instructions": "The adapter specifies waiting via the host's documented answer or wait mechanism, but this simulated case does not expose that mechanism. The next action is still to wait; do not invent a tool call."
+    },
+    {
+      "id": "higher_budget_followup",
+      "next_action": "Ask one question to distinguish large from unlimited.",
+      "question_payload": {
+        "questions": [
+          {
+            "header": "Budget",
+            "id": "large_or_unlimited",
+            "question": "For the higher fixed budget, choose large or unlimited.",
+            "options": [
+              {"label": "Large", "description": "Use xhigh reasoning."},
+              {"label": "Unlimited", "description": "Use max reasoning."}
+            ]
+          }
+        ]
+      },
+      "setup_writes_allowed": false,
+      "unclear_instructions": null
+    },
+    {
+      "id": "supplied_preferences",
+      "next_action": "Use the supplied choices without asking again. Show the proposed role table, then validate the already selected real models and run the bundled setup CLI in check mode with medium budget and the available-model arguments. Inspect the dry-run changes, then apply the setup within the user's explicit authorization. Skip both optional verification-skill offers as requested. Report sheet and managed-loader locations and restart requirement.",
+      "setup_writes_allowed": true,
+      "question_payload": null,
+      "unclear_instructions": "The prompt says the user wants to keep the shown role table, which implies it was already displayed. The generated skill nevertheless says to show the proposed model table before writing configuration; it should be shown again in this sequence before the check/apply steps if not actually visible in the conversation. The adapter says to start a new chat for global instructions and multi-agent configuration to load; it is unclear whether this is a recommendation or mandatory completion step, so report it rather than silently claiming setup is fully loaded in this chat."
+    }
+  ]
+}

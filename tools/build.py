@@ -54,7 +54,7 @@ def render():
         files['tools/setup.py'] = ((ROOT / 'tools/setup.py').read_bytes(), 0o644)
     manifest = {
         '$schema': 'https://agent-plugins.org/schemas/1.0.0/plugin.schema.json',
-        'name': 'pstack', 'version': '0.15.29-codex.1',
+        'name': 'pstack', 'version': '0.15.29-codex.2',
         'description': 'Lauren Tan\'s pstack workflows adapted for native Codex skills and subagents.',
         'author': {'name': 'Bane Stojanovic (Codex port); Lauren Tan (upstream)'},
         'homepage': 'https://github.com/banestojanovic/bane-codex-pstack',

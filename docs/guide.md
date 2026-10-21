@@ -1,6 +1,6 @@
 # Use pstack in Codex
 
-Install the marketplace and plugin using the [README](../README.md#install). Start a new chat and invoke `$pstack:setup-pstack`. Pick a reasoning budget, review the model roles, and keep or change the offered choices. For normal work, send `$pstack:poteto-mode` followed by a goal and a check that can pass or fail.
+Install the marketplace and plugin using the [README](../README.md#install). Start a new chat and invoke `$pstack:setup-pstack`. Pick a reasoning budget, review the model roles, and keep or change the offered choices. Setup uses native question controls when usable in the current mode. Otherwise it explicitly asks for a typed answer, one decision at a time. Optional verification offers follow completed model configuration. For normal work, send `$pstack:poteto-mode` followed by a goal and a check that can pass or fail.
 
 The workflow copies the selected playbook into its todo list. A skipped step stays visible with a reason. The parent gathers evidence, chooses a design, delegates through native Codex agents, and collects their results. Writing agents work in separate worktrees. Required independent review remains blocked when the host cannot provide reviewers.
 

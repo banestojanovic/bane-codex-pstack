@@ -39,6 +39,18 @@ ln -s /absolute/path/to/bane-codex-pstack/plugins/pstack/skills /path/to/project
 
 Keep the checkout available so relative resources resolve. Avoid installing two pstack distributions at once. Disable or remove the older `pstack@pstack-claude` plugin before relying on this port, since both expose the same skill names. This repository does not modify existing installations for you.
 
+## If setup shows text instead of selectable choices
+
+Setup uses the host's native question tool when one is usable. Some Codex sessions do not expose that tool in the current mode. In that case setup explains the limitation and asks one question that you answer by typing. A bullet list is not a selectable control.
+
+On Codex CLI versions that list `default_mode_request_user_input` in `codex features list`, you can opt into experimental interactive questions in Default mode for one launch:
+
+```sh
+codex --enable default_mode_request_user_input
+```
+
+Then invoke `$pstack:setup-pstack`. This launch flag does not persist a configuration change. The plugin does not turn experimental features on automatically. [Codex's CLI reference](https://learn.chatgpt.com/docs/cli/reference) documents feature flags. Tool availability still depends on the host and mode.
+
 ## Use the same workflow names
 
 Start a task with its goal and a concrete check:

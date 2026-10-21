@@ -86,7 +86,8 @@ class PackageTests(unittest.TestCase):
         import re
         from urllib.parse import unquote
         root = ROOT / 'plugins/pstack'
-        for path in root.rglob('*.md'):
+        markdown = (root / name for name in build.render()[0] if name.endswith('.md'))
+        for path in markdown:
             for href in re.findall(r'\]\(([^)\s]+)\)', path.read_text()):
                 target = href.split('#')[0].split('?')[0]
                 if not target or re.match(r'[a-zA-Z][a-zA-Z0-9+.-]*:', target) or any(c in target for c in '<>{}'):
